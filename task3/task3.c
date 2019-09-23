@@ -3,7 +3,7 @@
 #include <math.h>	
 
 
-float output;
+//float output;
 
 
 int main()
@@ -15,12 +15,12 @@ int main()
 	inputfile =fopen("sin_func","w");
 	
 
-	for (int i = 0; i <=360; i+=10)
+	for (int i = 0; i <=360; i+=1)
 	{
-		int input = i;
-		output = sin(i/(2*M_PI));
+		float input = i;
+		float output = sin(i/(2*M_PI));
 
-		printf("%i %f\n",input, output);
+		fprintf(inputfile,"%f %f\n",input, output);
 	}
 
 
