@@ -1,0 +1,15 @@
+
+OBJ=main.o statistics.o
+
+TARGET=program
+
+#this compiles each c file into an object file
+%.o: %.c
+	gcc -c -o $@.o $<
+
+
+
+#this links the objects into an exectuable
+# -o means : "output file name"
+$(TARGET): $(OBJ) 
+	gcc -o $@ $^
