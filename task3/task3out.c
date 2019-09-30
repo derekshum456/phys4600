@@ -3,7 +3,7 @@
 #include <math.h>	
 
 
-
+/*JAMES: Separate out printing and calculating. Catch if array_length = 0 */
 
 float mean(float* input,int array_length)
 {
@@ -75,7 +75,8 @@ void main(int argc, char** argv)
 	{
 		fscanf(inputfile, "%f %f", &j[a], &k[a]);
 	}
-	
+	/*JAMES: So your stddev function also calculates the mean, so with this you have calculated the mean twice. 
+	Maybe your stddev could return the mean through a pointer variable so you only have to calculate it once */
 	mean(k,count);
 	stddev(k,count);
 
