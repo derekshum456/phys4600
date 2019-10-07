@@ -34,12 +34,10 @@ float main(int argc, char** argv)
 			for(b = 0; b<smooth; b++)
 			{
 				sum += j[a+b];
-				avg = sum/smooth;
-				printf("%f\n", avg);
 			}
 
-		//avg=(j[a]+j[a+1]+j[a+2]+j[a+3]+j[a+4])/5;
-		//printf("%f\n", avg);
+			avg = sum/smooth;
+				printf("%f\n", avg);
 	}
 
 }
