@@ -12,12 +12,12 @@ float main(int argc, char** argv)
 	inputfile =fopen(argv[1],"r");
 
 	int count = 0;
-	float x, y;
+	float x;
 
 	if (inputfile != NULL)
 	{
 	
-	while(fscanf(inputfile, "%f %f", &x, &y) !=EOF)
+	while(fscanf(inputfile, "%f", &x) !=EOF)
 		{
 			++count;
 		}	
@@ -25,19 +25,28 @@ float main(int argc, char** argv)
 	
 	rewind(inputfile);
 	fflush(stdout);
-	float j[count], k[count], avg = 0, sum = 0;
+
+	float j[count], avg = 0, sum = 0;
 	int smooth = 5, b =0;
+
 	for (int a = 0; a <count-smooth; a++)
 	{
 		fscanf(inputfile, "%f", &j[a]);
-			
-			for(b = 0; b<smooth; b++)
+		
+	}
+	
+	for(b = 0; b<smooth; b++)
 			{
-				sum += j[a+b];
+				sum += j[b];
+				avg = sum/smooth;
+				printf("%f\n", avg);
 			}
 
-			avg = sum/smooth;
-				printf("%f\n", avg);
-	}
+	
+	
+	
+	
+
+			
 
 }

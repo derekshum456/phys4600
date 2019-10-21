@@ -16,3 +16,17 @@ int main()
 	fprintf(input_file,"\n%f %f",x,y)
 
 }
+
+NOTES
+ViSession scopeHandle;
+ ViSession FGHandle;
+
+ viFindRsrc(defaultRM, "USB[0-9]::0x0699?*INSTR", ...., dscription);
+ viOpen(defaultM, description, ....., scopehandle);
+
+ viFindRsrc(defaultRM, "USB[0-9]::0x1AB1?*INSTR", ...., dscription);
+ viOpen(defaultM, description, ....., FGHandle);
+
+ viWrite(scapeHandle, "IDN?/n",6,...);
+
+ viWrite(FGHandle, "IDN?/n",6,...);
