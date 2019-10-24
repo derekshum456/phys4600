@@ -3,9 +3,6 @@
 #include <math.h>	
 #include <time.h>
 
-
-
-
 float main(int argc, char** argv)
 {
 	FILE* inputfile;
@@ -26,27 +23,27 @@ float main(int argc, char** argv)
 	rewind(inputfile);
 	fflush(stdout);
 
-	float j[count], avg = 0, sum = 0;
-	int smooth = 5, b =0;
+	float j[count], avg[count], sum;
+	int smooth = 5;
 
-	for (int a = 0; a <count-smooth; a++)
+	for (int i=0; i<count;i++)
 	{
-		fscanf(inputfile, "%f", &j[a]);
-		
+		fscanf(inputfile, "%f", &j[i]);
+		//printf("%f", j[a]);
+	}
+
+
+	for (int b=0; b <count-smooth; b++)
+	{
+	sum = 0;	
+
+	for(int a=0; a<smooth; a++)
+			{
+				sum += j[a+b];
+				avg[b] = sum/smooth;
+				printf("%f\n", avg[b]);
+			}	
+
 	}
 	
-	for(b = 0; b<smooth; b++)
-			{
-				sum += j[b];
-				avg = sum/smooth;
-				printf("%f\n", avg);
-			}
-
-	
-	
-	
-	
-
-			
-
 }

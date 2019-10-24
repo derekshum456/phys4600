@@ -2,6 +2,8 @@
 #include <stdio.h>	 
 #include <math.h>	
 
+#include "amplitude.h"
+
 
 
 void main(int argc, char** argv)
@@ -25,6 +27,10 @@ FILE* inputfile;
 
 	rewind(inputfile);
 	fflush(stdout);
+
+	amplitude();
+
+	/*
 	float j[count], k[count], big =0, small=0, amplitude;
 
 	for (int a = 0; a <count; a++)
@@ -45,7 +51,7 @@ FILE* inputfile;
 	printf("%f\n", big);
 	printf("%f\n", small);
 	printf("%f\n", amplitude);
-
+*/
 
 
 
