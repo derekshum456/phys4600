@@ -38,7 +38,7 @@ void main(int argc, char** argv)
 				
 				viWrite(scopeHandle,"*IDN?\n",6,&resultCount);
 				viRead(scopeHandle,resultBuffer,256,&resultCount);
-				printf("\nResult buffer = %s\n",resultBuffer );
+				printf("\nosc = %s\n",resultBuffer );
 
 				status = viFindRsrc(defaultRM,"USB[0-9]::0x1AB1?*INSTR",	&resourceList,&num_inst,description); //looks for fg
 				if(status == VI_SUCCESS)
@@ -50,9 +50,9 @@ void main(int argc, char** argv)
 
 						printf("\nOpened %s\n",description);
 				
-						viWrite(scopeHandle,"*IDN?\n",6,&resultCount);
+						viWrite(funcHandle,"*IDN?\n",6,&resultCount);
 						viRead(funcHandle,resultBuffer,256,&resultCount);
-						printf("\nResult buffer = %s\n",resultBuffer );
+						printf("\nFG = %s\n",resultBuffer );
 
 						viWrite(scopeHandle,"DAT:SOU CH1\n",12,&resultCount);
 						viWrite(scopeHandle,"CURV?\n",6,&resultCount);
@@ -71,7 +71,7 @@ void main(int argc, char** argv)
 							y = dataBuffer[i];
 							x[i] = dataBuffer[i]*q;
 					
-							//printf("\nRaw = %x,  Read = %d, voltage = %f",y,y,x[i]);
+							printf("\nRaw = %x,  Read = %d, voltage = %f",y,y,x[i]);
 						}
 				
 								//viWrite(scopeHandle,"CH1:VOLts 100E-2\n",16,&resultCount);
