@@ -2,57 +2,69 @@
 #include <stdio.h>	 
 #include <math.h>	
 
-#include "amplitude.h"
+#include "amplitude_value.h"
+#include "smooth.h"
+
 
 
 
 void main(int argc, char** argv)
 {
-
-FILE* inputfile;
-	inputfile =fopen(argv[1],"r");
-
 	int count = 0;
-	float x, y;
+	float x, amplitude;
+	FILE* inputfile;
+	inputfile =fopen(argv[1],"r");
 
 	if (inputfile != NULL)
 	{
 	
-	while(fscanf(inputfile, "%f %f", &x, &y) !=EOF)
-		{
-			++count;
-		}	
+		while(fscanf(inputfile, "%f", &x) !=EOF)
+			{
+				++count;
+			}	
+	
+
+		float data[count];
+		rewind(inputfile);
+
+		for(int i=0;i<count;i++)
+			{
+				if(fscanf(inputfile,"%f",&data[i])== EOF)
+				{
+				break;
+				}
+			}
+	
+		fflush(stdout);
+		fclose(inputfile);
+
+		amplitude = amplitude_value(data, count);
+	    printf("amplitude = %f\n", amplitude);
+
+	    inputfile = fopen("sin_func","r");
+
+	    if(inputfile != NULL)
+	    	{
+	    		while(fscanf(inputfile,"%f", &x) != EOF)
+	    			count2++=;
+	    	}
+	    	float data2[count2];
+	    	rewind(inputfile);
+	    	for(int i=0;i<count2;i++)
+	    		{
+	    			if(fcanf(inputfile,"%f",&data2[i]) ==EOF)
+	    			{
+	    				break;
+	    			}
+	    		}
+	    		fclose(inputfile);
+	    		smooth(data2, count2, 5);
 	}
-	//printf("%d\n",count);
 
-	rewind(inputfile);
-	fflush(stdout);
-
-	amplitude();
-
-	/*
-	float j[count], k[count], big =0, small=0, amplitude;
-
-	for (int a = 0; a <count; a++)
+	else
 	{
-		fscanf(inputfile, "%f %f", &j[a], &k[a]);
-		if (big<k[a])
-		{
-			big=k[a];
-		}
-		if (small>k[a])
-		{
-			small=k[a];
-		}
+		printf("unable to open file");
 	}
-
-	amplitude= (big-small)/2;
-
-	printf("%f\n", big);
-	printf("%f\n", small);
-	printf("%f\n", amplitude);
-*/
-
 
 
 

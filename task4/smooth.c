@@ -3,47 +3,30 @@
 #include <math.h>	
 #include <time.h>
 
-float main(int argc, char** argv)
+float smooth(float*data, int size, int smooth_factor)
 {
 	FILE* inputfile;
-	inputfile =fopen(argv[1],"r");
-
-	int count = 0;
-	float x;
-
-	if (inputfile != NULL)
-	{
+	float average, sum
+	int i=0;
 	
-	while(fscanf(inputfile, "%f", &x) !=EOF)
-		{
-			++count;
-		}	
-	}
+
+	if(smooth>size) 
+		return 0; //check if avg is largert than data size
 	
-	rewind(inputfile);
-	fflush(stdout);
+		inputfile =fopen(sin_func, "w");
 
-	float j[count], avg[count], sum;
-	int smooth = 5;
-
-	for (int i=0; i<count;i++)
-	{
-		fscanf(inputfile, "%f", &j[i]);
-		//printf("%f", j[a]);
-	}
-
-
-	for (int b=0; b <count-smooth; b++)
-	{
-	sum = 0;	
-
-	for(int a=0; a<smooth; a++)
+		if(inputfile != NULL)
 			{
-				sum += j[a+b];
-				avg[b] = sum/smooth;
-				printf("%f\n", avg[b]);
-			}	
-
-	}
-	
+				for(int i=0; i<size-smooth;i++)
+					{
+						sum = 0;
+						for(int j=0; j<smooth; j++)
+							{
+								sum += data[i+j];
+							}
+							average = sum/smooth;
+							fprintf(inputfile, "%f\n", average);
+					}
+			}
+				
 }
